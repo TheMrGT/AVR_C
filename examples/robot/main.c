@@ -4,6 +4,7 @@ the robot arm to use. Currently the user must enter a command,
 a joint, a direction and distance for every command. 
 */
 
+//git test
 #include <stdio.h>
 #include <string.h>
 #include "uart.h"
@@ -18,7 +19,6 @@ a joint, a direction and distance for every command.
 #define max_jointcmd_len 7 //ie: joint1
 #define max_dircmd_len 3 //1,0,-1
 #define max_discmd_len 5 //up to 9999+1
-
 
 int main(void) {    
 
