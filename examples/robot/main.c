@@ -1,10 +1,11 @@
 // Command processor for Robot arm
-//This program takes user input and turns it into commands for
-//the robot arm to use. Currently the user must enter a command, 
-//a joint, a direction and distance for every command. 
+// This program takes user input and turns it into instructions for the robot
+// arm to use. User must enter a command, a joint, a direction and distance
+// for every instruction. program uses "readline" function to take input.
+// Then uses "strtok" with defined delimiter to seperate input into tokens 
+// and stored in "tokens" array. Tokens are then taken in order from the array,
+//and stored into variables "movCmd, jointCmd, dirCmd, disCmd" respectively.
 
-
-//git test
 #include <stdio.h>
 #include <string.h>
 #include "uart.h"
@@ -14,11 +15,11 @@
 #define MAX_TOKENS (MAX_BUFFER/2)
 #define MAX_DELIMS 1
 
-//Array limits for movement instructions
-#define max_cmd_len 5 //4 letter command 
-#define max_jointcmd_len 7 //ie: joint1
-#define max_dircmd_len 3 //1,0,-1
-#define max_discmd_len 5 //up to 9999+1
+// Array limits for movement instructions
+#define max_cmd_len 5 // 4 letter command
+#define max_jointcmd_len 7 // ie: joint1
+#define max_dircmd_len 3 // 1,0,-1
+#define max_discmd_len 5 // up to 9999+1
 
 int main(void) {    
 
@@ -26,11 +27,11 @@ int main(void) {
     char input[MAX_BUFFER + 1] = {};
     char delims[MAX_DELIMS + 1] = {" "};
     puts("ROBOT APP TEST");
-
-    printf("Enter the name of command followed by joint, direction, and distance");
+    printf("Enter name of command followed by joint, direction, and distance");
     printf("\nSeperate with a space");
     printf("\n(EX: move joint1 -1 750)\n");
 
+    // readline function, takes input up to MAX_BUFFER (30)
     uint8_t num_char = readLine(input, MAX_BUFFER);
 
     printf("You entered %i characters\n", num_char);
@@ -58,19 +59,20 @@ int main(void) {
         printf("%5i %s\n", index, tokens[index]);
 
     }
-//movement
+
+// movement
     char movCmd[max_cmd_len]={};
     strncpy(movCmd, tokens[0], max_cmd_len);
     printf("Movement command is: %s\n",movCmd);
-//joints
+// joints
     char jointCmd[max_jointcmd_len] = {};
     strncpy(jointCmd, tokens[1], max_jointcmd_len);
     printf("Joint command is: %s\n",jointCmd);
-//direction
+// direction
     char dirCmd[max_dircmd_len]={};
     strncpy(dirCmd, tokens[2], max_dircmd_len);
     printf("Direction command is: %s\n",dirCmd);
-//distance
+// distance
     char disCmd[max_discmd_len]={};
     strncpy(disCmd, tokens[3], max_discmd_len);
     printf("Distance command is: %s\n",disCmd);
