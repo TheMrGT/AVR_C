@@ -1,8 +1,8 @@
-/* Command processor for Robot arm
-This program takes user input and turns it into commands for
-the robot arm to use. Currently the user must enter a command, 
-a joint, a direction and distance for every command. 
-*/
+// Command processor for Robot arm
+//This program takes user input and turns it into commands for
+//the robot arm to use. Currently the user must enter a command, 
+//a joint, a direction and distance for every command. 
+
 
 //git test
 #include <stdio.h>
@@ -26,19 +26,6 @@ int main(void) {
     char input[MAX_BUFFER + 1] = {};
     char delims[MAX_DELIMS + 1] = {" "};
     puts("ROBOT APP TEST");
-/*
-    puts("Serial I/O Test: readLine with tokens");
-    printf("Enter text up to %i characters, or end w/ CR\n", MAX_BUFFER);
-    printf("Line will be parsed into tokens\n");
-    printf("Possible delimitors are (w/ ASCII code): ");
-
-
-    for (uint8_t delim=0; delim < MAX_DELIMS; delim++)
-    {
-        printf("'%c' 0x%x ", delims[delim], delims[delim]); //prints literal delim w/ ascii representation
-    }
-    printf("\n");
-*/
 
     printf("Enter the name of command followed by joint, direction, and distance");
     printf("\nSeperate with a space");
